@@ -1,0 +1,14 @@
+Filled container. 
+Container contains 5 elements.
+0: It's an Aphorism: Success is the child of audacity.
+Aphorism's author is: Benjamin Disraeli
+1: It's a Proverb: Two wrongs don't make a right.
+Proverbs's country is: England
+2: It's an Aphorism: You miss 100% of the shots you don’t take.
+Aphorism's author is: Wayne Gretzky
+3: It's an Aphorism: lalall
+Aphorism's author is: hjbn
+4: It's a Proverb: haha
+Proverbs's country is: hahahah
+Empty container. 
+Container contains 0 elements.
