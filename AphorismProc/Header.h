@@ -72,4 +72,6 @@ void Out_Proverb(Proverb* P, ofstream& ofst);
 //Функция очистки контейнера
 Container* Clear(Container* Head);
 
+void Out_Only_Aphorism(Container* Head, ofstream& ofst);
+
 #endif // HEADER_H

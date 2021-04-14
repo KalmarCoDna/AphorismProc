@@ -12,5 +12,15 @@ Aphorism's author is: Wayne Gretzky
 Aphorism's author is: 222222
 5: It's a Proverb: adcdef
 Proverbs's country is: qwerty
+
+Only Aphorisms.
+It's an Aphorism: Success is the child of audacity.
+Aphorism's author is: Benjamin Disraeli
+It's an Aphorism: You miss 100% of the shots you don’t take.
+Aphorism's author is: Wayne Gretzky
+It's an Aphorism: You miss 100% of the shots you don’t take.
+Aphorism's author is: Wayne Gretzky
+It's an Aphorism: 111111
+Aphorism's author is: 222222
 Empty container. 
 Container contains 0 elements.

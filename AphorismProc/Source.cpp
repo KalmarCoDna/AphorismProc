@@ -169,3 +169,21 @@ Container* Clear(Container* Head) {
     }
     return Head;
 }
+
+void Out_Only_Aphorism(Container* Head, ofstream& ofst) {
+    ofst << endl << "Only Aphorisms." << endl;
+
+    for (int i = 0; i < Head->Len; i++)
+    {
+        if (Head->Cont->K == APHORISM)
+        {
+            //ofst << i << ": ";
+            Out_Storehouse(Head->Cont, ofst);
+            Head = Head->Next;
+        }
+        else
+        {
+            Head = Head->Next;
+        }
+    }
+}

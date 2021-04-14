@@ -1,4 +1,4 @@
-﻿// 1lab.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
+﻿// 2lab_Filter_Out.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
 //
 
 #include "Header.h"
@@ -22,6 +22,8 @@ int main(int argc, char* argv[])
     In(Head, ifst);
     ofst << "Filled container. " << endl;
     Out(Head, ofst);
+
+    Out_Only_Aphorism(Head, ofst);
 
     Head = Clear(Head);
     ofst << "Empty container. " << endl;
