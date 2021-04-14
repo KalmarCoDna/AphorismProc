@@ -56,6 +56,7 @@ Storehouse* In_Storehouse(ifstream& ifst) {
         St->Obj = In_Aphorism(ifst); //Считываем информацию об афоризма
         Aphorism* Temp_A = (Aphorism*)St->Obj; //Получаем данные об афоризма
         St->Content = Temp_A->Content; //Записываем в общий параметр содержание
+        St->Estimation = Temp_A->Estimation;
         return St;
     }
     else if (K == 2) //Если K == 2, то это пословица или поговорка
@@ -64,6 +65,7 @@ Storehouse* In_Storehouse(ifstream& ifst) {
         St->Obj = In_Proverb(ifst); //Считываем информацию о пословице или поговорке
         Proverb* Temb_P = (Proverb*)St->Obj; //Получаем информацию о пословице или поговорке
         St->Content = Temb_P->Content; //Записываем в общий параметр содержание
+        St->Estimation = Temb_P->Estimation;
         return St;
     }
     else
@@ -93,6 +95,8 @@ void* In_Aphorism(ifstream& ifst) {
 
     A->Author += Temp_El;
 
+    ifst >> A->Estimation;
+
     return A;
 }
 
@@ -116,6 +120,8 @@ void* In_Proverb(ifstream& ifst) {
     }
 
     P->Country += Temp_El;
+
+    ifst >> P->Estimation;
 
     return P;
 }
@@ -150,11 +156,13 @@ void Out_Storehouse(Storehouse* St, ofstream& ofst) {
 void Out_Aphorism(Aphorism* A, ofstream& ofst) {
     ofst << "It's an Aphorism: " << A->Content << endl; //Выводим содержание
     ofst << "Aphorism's author is: " << A->Author << endl; //Выводим автора
+    ofst << "Subjective estimation of the adage: " << A->Estimation << endl;
 }
 
 void Out_Proverb(Proverb* P, ofstream& ofst) {
     ofst << "It's a Proverb: " << P->Content << endl; //Выводим содержание
     ofst << "Proverbs's country is: " << P->Country << endl; //Выводим страну
+    ofst << "Subjective estimation of the adage: " << P->Estimation << endl;
 }
 
 Container* Clear(Container* Head) {

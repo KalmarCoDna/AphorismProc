@@ -1,16 +1,13 @@
 Filled container. 
-Container contains 6 elements.
+Container contains 3 elements.
 0: It's an Aphorism: Success is the child of audacity.
 Aphorism's author is: Benjamin Disraeli
+Subjective estimation of the adage: 7
 1: It's a Proverb: Two wrongs don't make a right.
 Proverbs's country is: England
+Subjective estimation of the adage: 4
 2: It's an Aphorism: You miss 100% of the shots you don’t take.
 Aphorism's author is: Wayne Gretzky
-3: It's an Aphorism: You miss 100% of the shots you don’t take.
-Aphorism's author is: Wayne Gretzky
-4: It's an Aphorism: 111111
-Aphorism's author is: 222222
-5: It's a Proverb: adcdef
-Proverbs's country is: qwerty
+Subjective estimation of the adage: 9
 Empty container. 
 Container contains 0 elements.
