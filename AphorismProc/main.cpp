@@ -1,4 +1,4 @@
-﻿// 2lab_New_Func.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
+﻿// 2lab_Sort.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
 //
 
 #include "Header.h"
@@ -21,6 +21,9 @@ int main(int argc, char* argv[])
 
     In(Head, ifst);
     ofst << "Filled container. " << endl;
+
+    Sort(Head);
+
     Out(Head, ofst);
 
     Head = Clear(Head);

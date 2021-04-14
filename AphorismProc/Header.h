@@ -76,4 +76,7 @@ int Amount(Storehouse* St);
 
 int Amount_Storehouse(Storehouse* St);
 
+bool Compare(Container* First, Container* Second);
+
+void Sort(Container* Head);
 #endif // HEADER_H

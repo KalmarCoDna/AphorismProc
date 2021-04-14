@@ -214,3 +214,36 @@ int Amount(Storehouse* St) {
         return -1;
     }
 }
+
+bool Compare(Container* First, Container* Second)
+{
+    return Amount_Storehouse(First->Cont) > Amount_Storehouse(Second->Cont);
+}
+
+void Sort(Container* Head) {
+    if (Head->Len > 1)
+    {
+        Container* First = Head;
+        Container* Second = Head->Next;
+
+        Container* Temp = new Container;
+
+        for (int i = 0; i < Head->Len - 1; i++)
+        {
+            for (int j = 0; j < Head->Len - i - 1; j++)
+            {
+                if (Compare(First, Second))
+                {
+                    Temp->Cont = First->Cont;
+                    First->Cont = Second->Cont;
+                    Second->Cont = Temp->Cont;
+                }
+
+                Second = Second->Next;
+            }
+
+            First = First->Next;
+            Second = First->Next;
+        }
+    }
+}
