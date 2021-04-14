@@ -66,6 +66,14 @@ Storehouse* In_Storehouse(ifstream& ifst) {
         St->Content = Temb_P->Content; //Записываем в общий параметр содержание
         return St;
     }
+    else if (K == 3)
+    {
+        St->K = RIDDLE;
+        St->Obj = In_Riddle(ifst);
+        Riddle* Temp_R = (Riddle*)St->Obj;
+        St->Content = Temp_R->Content;
+        return St;
+    }
     else
     {
         return 0;
@@ -120,6 +128,30 @@ void* In_Proverb(ifstream& ifst) {
     return P;
 }
 
+void* In_Riddle(ifstream& ifst) {
+    Riddle* R = new Riddle; //Выделяем помать под загадку
+
+    string Temp_El = ""; //Буфер для считывания строк
+
+    //Считываем содержание
+    while (!(ifst >> Temp_El) || (ifst.peek() != '\n'))
+    {
+        R->Content += Temp_El + " ";
+    }
+
+    R->Content += Temp_El;
+
+    //Считываем ответ
+    while (!(ifst >> Temp_El) || (ifst.peek() != '\n'))
+    {
+        R->Answer += Temp_El + " ";
+    }
+
+    R->Answer += Temp_El;
+
+    return R;
+}
+
 void Out(Container* Head, ofstream& ofst) {
     ofst << "Container contains " << Head->Len
         << " elements." << endl; //Выводим информацию о размерности контейнера
@@ -141,6 +173,10 @@ void Out_Storehouse(Storehouse* St, ofstream& ofst) {
     {
         Out_Proverb((Proverb*)St->Obj, ofst); //Выводим информацию о пословицах и поговорках
     }
+    else if (St->K == RIDDLE)
+    {
+        Out_Riddle((Riddle*)St->Obj, ofst);
+    }
     else
     {
         ofst << "Incorrect element!" << endl;
@@ -155,6 +191,11 @@ void Out_Aphorism(Aphorism* A, ofstream& ofst) {
 void Out_Proverb(Proverb* P, ofstream& ofst) {
     ofst << "It's a Proverb: " << P->Content << endl; //Выводим содержание
     ofst << "Proverbs's country is: " << P->Country << endl; //Выводим страну
+}
+
+void Out_Riddle(Riddle* R, ofstream& ofst) {
+    ofst << "It's a Riddle: " << R->Content << endl; //Выводим содержание
+    ofst << "Riddle's answer is: " << R->Answer << endl; //Выводим ответ
 }
 
 Container* Clear(Container* Head) {

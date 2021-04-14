@@ -11,7 +11,8 @@ using namespace std;
 //Идентификатор кладези мудрости
 enum Key {
     APHORISM,
-    PROVERB
+    PROVERB,
+    RIDDLE
 };
 
 //Структура, содержащая информацию о кладези
@@ -42,6 +43,13 @@ struct Proverb {
     string Country; //Страна пословицы или поговорки
 };
 
+//Структура, содержащая информацию о загадках
+struct Riddle {
+    Key K;
+    string Content;
+    string Answer;
+};
+
 //Функция инициализации контейнера
 Container* Init(Container* Head);
 
@@ -57,6 +65,8 @@ void* In_Aphorism(ifstream& ifst);
 //Функция ввода пословицы или поговорки
 void* In_Proverb(ifstream& ifst);
 
+void* In_Riddle(ifstream& ifst);
+
 //Функция вывода элемента контейнера
 void Out(Container* Head, ofstream& ofst);
 
@@ -68,6 +78,8 @@ void Out_Aphorism(Aphorism* A, ofstream& ofst);
 
 //Функция вывода пословицы или поговорки
 void Out_Proverb(Proverb* P, ofstream& ofst);
+
+void Out_Riddle(Riddle* R, ofstream& ofst);
 
 //Функция очистки контейнера
 Container* Clear(Container* Head);

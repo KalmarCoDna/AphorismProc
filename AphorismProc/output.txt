@@ -1,5 +1,5 @@
 Filled container. 
-Container contains 6 elements.
+Container contains 7 elements.
 0: It's an Aphorism: Success is the child of audacity.
 Aphorism's author is: Benjamin Disraeli
 1: It's a Proverb: Two wrongs don't make a right.
@@ -12,5 +12,7 @@ Aphorism's author is: Wayne Gretzky
 Aphorism's author is: 222222
 5: It's a Proverb: adcdef
 Proverbs's country is: qwerty
+6: It's a Riddle: What has a face and two hands but no arms or legs?
+Riddle's answer is: Clock
 Empty container. 
 Container contains 0 elements.

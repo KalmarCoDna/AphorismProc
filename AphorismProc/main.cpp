@@ -1,7 +1,4 @@
-﻿// 1lab.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
-//
-
-#include "Header.h"
+﻿#include "Header.h"
 
 int main(int argc, char* argv[])
 {
