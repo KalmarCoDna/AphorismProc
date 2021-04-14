@@ -2,15 +2,21 @@ Filled container.
 Container contains 6 elements.
 0: It's an Aphorism: Success is the child of audacity.
 Aphorism's author is: Benjamin Disraeli
+Amount of punctuation marks in the content of storehouse = 1
 1: It's a Proverb: Two wrongs don't make a right.
 Proverbs's country is: England
+Amount of punctuation marks in the content of storehouse = 2
 2: It's an Aphorism: You miss 100% of the shots you don’t take.
 Aphorism's author is: Wayne Gretzky
+Amount of punctuation marks in the content of storehouse = 5
 3: It's an Aphorism: You miss 100% of the shots you don’t take.
 Aphorism's author is: Wayne Gretzky
+Amount of punctuation marks in the content of storehouse = 5
 4: It's an Aphorism: 111111
 Aphorism's author is: 222222
+Amount of punctuation marks in the content of storehouse = 0
 5: It's a Proverb: adcdef
 Proverbs's country is: qwerty
+Amount of punctuation marks in the content of storehouse = 0
 Empty container. 
 Container contains 0 elements.

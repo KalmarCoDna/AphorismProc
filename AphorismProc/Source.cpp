@@ -128,6 +128,7 @@ void Out(Container* Head, ofstream& ofst) {
     {
         ofst << i << ": "; //Выводим номер узла
         Out_Storehouse(Head->Cont, ofst); //Выводим информацию о кладези
+        ofst << "Amount of punctuation marks in the content of storehouse = " << Amount_Storehouse(Head->Cont) << endl;
         Head = Head->Next; //Переходим к след. узлу
     }
 }
@@ -168,4 +169,48 @@ Container* Clear(Container* Head) {
         Len--; //Уменьшаем зафиксированную длину
     }
     return Head;
+}
+
+int Amount_Storehouse(Storehouse* St) {
+    if (St->K == APHORISM || St->K == PROVERB)
+    {
+        return Amount(St);
+    }
+    else
+    {
+        return -1;
+    }
+}
+
+int Amount(Storehouse* St) {
+    if (St->K == APHORISM || St->K == PROVERB)
+    {
+        string Alph = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ 0123456789";
+        int Amount = 0;
+
+        for (int i = 0; i < St->Content.size(); i++)
+        {
+            bool Check = false;
+
+            for (int j = 0; j < Alph.size(); j++)
+            {
+                if (St->Content[i] == Alph[j])
+                {
+                    Check = true;
+                    break;
+                }
+            }
+
+            if (!Check)
+            {
+                Amount++;
+            }
+        }
+
+        return Amount;
+    }
+    else
+    {
+        return -1;
+    }
 }

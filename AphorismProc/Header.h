@@ -72,4 +72,8 @@ void Out_Proverb(Proverb* P, ofstream& ofst);
 //Функция очистки контейнера
 Container* Clear(Container* Head);
 
+int Amount(Storehouse* St);
+
+int Amount_Storehouse(Storehouse* St);
+
 #endif // HEADER_H
