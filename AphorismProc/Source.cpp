@@ -74,6 +74,7 @@ Storehouse* In_Storehouse(ifstream& ifst) {
         St->Obj = In_Riddle(ifst);
         Riddle* Temp_R = (Riddle*)St->Obj;
         St->Content = Temp_R->Content;
+        St->Estimation = Temp_R->Estimation;
         return St;
     }
     else
@@ -155,12 +156,14 @@ void* In_Riddle(ifstream& ifst) {
 
     R->Answer += Temp_El;
 
+    ifst >> R->Estimation;
+
     return R;
 }
 
 void Out(Container* Head, ofstream& ofst) {
     ofst << "Container contains " << Head->Len
-        << " elements." << endl; //Выводим информацию о размерности контейнера
+        << " elements." << endl << endl; //Выводим информацию о размерности контейнера
 
     for (int i = 0; i < Head->Len; i++)
     {
@@ -205,6 +208,7 @@ void Out_Proverb(Proverb* P, ofstream& ofst) {
 void Out_Riddle(Riddle* R, ofstream& ofst) {
     ofst << "It's a Riddle: " << R->Content << endl; //Выводим содержание
     ofst << "Riddle's answer is: " << R->Answer << endl; //Выводим ответ
+    ofst << "Subjective estimation of the adage: " << R->Estimation << endl;
 }
 
 Container* Clear(Container* Head) {
@@ -221,7 +225,7 @@ Container* Clear(Container* Head) {
 }
 
 int Amount_Storehouse(Storehouse* St) {
-    if (St->K == APHORISM || St->K == PROVERB)
+    if (St->K == APHORISM || St->K == PROVERB || St->K == RIDDLE)
     {
         return Amount(St);
     }
@@ -232,7 +236,7 @@ int Amount_Storehouse(Storehouse* St) {
 }
 
 int Amount(Storehouse* St) {
-    if (St->K == APHORISM || St->K == PROVERB)
+    if (St->K == APHORISM || St->K == PROVERB || St->K == RIDDLE)
     {
         string Alph = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ 0123456789";
         int Amount = 0;
@@ -293,6 +297,24 @@ void Sort(Container* Head) {
 
             First = First->Next;
             Second = First->Next;
+        }
+    }
+}
+
+void Out_Only_Aphorism(Container* Head, ofstream& ofst) {
+    ofst << endl << "Only Aphorisms." << endl;
+
+    for (int i = 0; i < Head->Len; i++)
+    {
+        if (Head->Cont->K == APHORISM)
+        {
+            ofst << i << ": ";
+            Out_Storehouse(Head->Cont, ofst);
+            Head = Head->Next;
+        }
+        else
+        {
+            Head = Head->Next;
         }
     }
 }

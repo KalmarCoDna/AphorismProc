@@ -51,6 +51,7 @@ struct Riddle {
     Key K;
     string Content;
     string Answer;
+    int Estimation;
 };
 
 //Функция инициализации контейнера
@@ -94,4 +95,6 @@ int Amount_Storehouse(Storehouse* St);
 bool Compare(Container* First, Container* Second);
 
 void Sort(Container* Head);
+
+void Out_Only_Aphorism(Container* Head, ofstream& ofst);
 #endif // HEADER_H
