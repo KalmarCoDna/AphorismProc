@@ -16,3 +16,6 @@ Wayne Gretzky
 2
 adcdef
 qwerty
+3
+What has a face and two hands but no arms or legs?
+Clock
