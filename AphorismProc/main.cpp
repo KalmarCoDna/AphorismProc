@@ -1,4 +1,4 @@
-﻿// 3lab.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
+﻿// 4lab.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
 //
 
 #include "Header.h"
@@ -13,6 +13,7 @@ int main(int argc, char* argv[])
     }
     ifstream ifst(argv[1]);
     ofstream ofst(argv[2]);
+
     cout << "Start" << endl;
 
     Container* Head = new Container();
@@ -20,9 +21,8 @@ int main(int argc, char* argv[])
     Head = Init(Head);
 
     In(Head, ifst);
-    ofst << "Filled container. " << endl;
 
-    Out(Head, ofst);
+    ofst << "Filled container. " << endl;
 
     Sort(Head);
 
@@ -33,7 +33,9 @@ int main(int argc, char* argv[])
     ofst << endl;
 
     Head = Clear(Head);
+
     ofst << "Empty container. " << endl;
+
     Out(Head, ofst);
 
     cout << "Stop" << endl;

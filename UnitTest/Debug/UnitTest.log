@@ -1,0 +1,6 @@
+﻿  pch.cpp
+  UnitTest.cpp
+C:\Users\Kalmar\Desktop\Дистанционка\ТиМП\AphorismProc\AphorismProc\Source.cpp(211,23): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Kalmar\Desktop\Дистанционка\ТиМП\AphorismProc\AphorismProc\Source.cpp(215,27): warning C4018: <: несоответствие типов со знаком и без знака
+     Создается библиотека C:\Users\Kalmar\Desktop\Дистанционка\ТиМП\AphorismProc\Debug\UnitTest.lib и объект C:\Users\Kalmar\Desktop\Дистанционка\ТиМП\AphorismProc\Debug\UnitTest.exp
+  UnitTest.vcxproj -> C:\Users\Kalmar\Desktop\Дистанционка\ТиМП\AphorismProc\Debug\UnitTest.dll

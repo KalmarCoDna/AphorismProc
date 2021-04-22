@@ -33,25 +33,19 @@ struct Container {
 //Структура, содержащая информацию об афоризмах
 struct Aphorism {
     Key K; //Идентификатор кладези
-    string Content; //Содержание афоризма
     string Author; //Автора афоризма
-    int Estimation;
 };
 
 //Структура, содержащая информацию о пословицах и поговорках
 struct Proverb {
     Key K; //Идентификатор кладези
-    string Content; //Содержание пословицы или поговорки
     string Country; //Страна пословицы или поговорки
-    int Estimation;
 };
 
 //Структура, содержащая информацию о загадках
 struct Riddle {
     Key K;
-    string Content;
-    string Answer;
-    int Estimation;
+    string Answer; //Ответ на загадку
 };
 
 //Функция инициализации контейнера
@@ -78,17 +72,17 @@ void Out(Container* Head, ofstream& ofst);
 void Out_Storehouse(Storehouse* St, ofstream& ofst);
 
 //Функция вывода афоризма
-void Out_Aphorism(Aphorism* A, ofstream& ofst);
+void Out_Aphorism(Aphorism* A, string Content, int Estimation, ofstream& ofst);
 
 //Функция вывода пословицы или поговорки
-void Out_Proverb(Proverb* P, ofstream& ofst);
+void Out_Proverb(Proverb* P, string Content, int Estimation, ofstream& ofst);
 
-void Out_Riddle(Riddle* R, ofstream& ofst);
+void Out_Riddle(Riddle* R, string Content, int Estimation, ofstream& ofst);
 
 //Функция очистки контейнера
 Container* Clear(Container* Head);
 
-int Amount(Storehouse* St);
+int Amount(string Content);
 
 int Amount_Storehouse(Storehouse* St);
 

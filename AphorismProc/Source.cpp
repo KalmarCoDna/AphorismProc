@@ -48,33 +48,56 @@ void In(Container* Head, ifstream& ifst) {
 
 Storehouse* In_Storehouse(ifstream& ifst) {
     Storehouse* St = new Storehouse; //Выделяем память под кладезь
-    int K; //Идентификатор кладези
-    ifst >> K; //Считываем из файла идентификатор кладези
+
+    string Temp = "";
+
+    getline(ifst, Temp);
+
+    int K = atoi(Temp.c_str());
+
     if (K == 1) //Если K == 1, то это афоризма
     {
         St->K = APHORISM; //Записывает то, что это афоризма
+
+        getline(ifst, St->Content);
+
         St->Obj = In_Aphorism(ifst); //Считываем информацию об афоризма
         Aphorism* Temp_A = (Aphorism*)St->Obj; //Получаем данные об афоризма
-        St->Content = Temp_A->Content; //Записываем в общий параметр содержание
-        St->Estimation = Temp_A->Estimation;
+
+        getline(ifst, Temp);
+
+        St->Estimation = atoi(Temp.c_str());
+
         return St;
     }
     else if (K == 2) //Если K == 2, то это пословица или поговорка
     {
         St->K = PROVERB; //Записываем то, что это пословица или поговорка
+
+        getline(ifst, St->Content);
+
         St->Obj = In_Proverb(ifst); //Считываем информацию о пословице или поговорке
         Proverb* Temb_P = (Proverb*)St->Obj; //Получаем информацию о пословице или поговорке
-        St->Content = Temb_P->Content; //Записываем в общий параметр содержание
-        St->Estimation = Temb_P->Estimation;
+
+        getline(ifst, Temp);
+
+        St->Estimation = atoi(Temp.c_str());
+
         return St;
     }
     else if (K == 3)
     {
         St->K = RIDDLE;
+
+        getline(ifst, St->Content);
+
         St->Obj = In_Riddle(ifst);
         Riddle* Temp_R = (Riddle*)St->Obj;
-        St->Content = Temp_R->Content;
-        St->Estimation = Temp_R->Estimation;
+
+        getline(ifst, Temp);
+
+        St->Estimation = atoi(Temp.c_str());
+
         return St;
     }
     else
@@ -86,25 +109,7 @@ Storehouse* In_Storehouse(ifstream& ifst) {
 void* In_Aphorism(ifstream& ifst) {
     Aphorism* A = new Aphorism; //Выделяем память под афоризма
 
-    string Temp_El = ""; //Буфер для считывания строк
-
-    //Считываем содержание афоризма
-    while (!(ifst >> Temp_El) || (ifst.peek() != '\n'))
-    {
-        A->Content += Temp_El + " ";
-    }
-
-    A->Content += Temp_El;
-
-    //Считываем автора афоризма
-    while (!(ifst >> Temp_El) || (ifst.peek() != '\n'))
-    {
-        A->Author += Temp_El + " ";
-    }
-
-    A->Author += Temp_El;
-
-    ifst >> A->Estimation;
+    getline(ifst, A->Author);
 
     return A;
 }
@@ -112,25 +117,7 @@ void* In_Aphorism(ifstream& ifst) {
 void* In_Proverb(ifstream& ifst) {
     Proverb* P = new Proverb; //Выделяем помать под пословицу или поговорку
 
-    string Temp_El = ""; //Буфер для считывания строк
-
-    //Считываем содержание
-    while (!(ifst >> Temp_El) || (ifst.peek() != '\n'))
-    {
-        P->Content += Temp_El + " ";
-    }
-
-    P->Content += Temp_El;
-
-    //Считываем страну
-    while (!(ifst >> Temp_El) || (ifst.peek() != '\n'))
-    {
-        P->Country += Temp_El + " ";
-    }
-
-    P->Country += Temp_El;
-
-    ifst >> P->Estimation;
+    getline(ifst, P->Country);
 
     return P;
 }
@@ -138,25 +125,7 @@ void* In_Proverb(ifstream& ifst) {
 void* In_Riddle(ifstream& ifst) {
     Riddle* R = new Riddle; //Выделяем помать под загадку
 
-    string Temp_El = ""; //Буфер для считывания строк
-
-    //Считываем содержание
-    while (!(ifst >> Temp_El) || (ifst.peek() != '\n'))
-    {
-        R->Content += Temp_El + " ";
-    }
-
-    R->Content += Temp_El;
-
-    //Считываем ответ
-    while (!(ifst >> Temp_El) || (ifst.peek() != '\n'))
-    {
-        R->Answer += Temp_El + " ";
-    }
-
-    R->Answer += Temp_El;
-
-    ifst >> R->Estimation;
+    getline(ifst, R->Answer);
 
     return R;
 }
@@ -177,15 +146,15 @@ void Out(Container* Head, ofstream& ofst) {
 void Out_Storehouse(Storehouse* St, ofstream& ofst) {
     if (St->K == APHORISM)
     {
-        Out_Aphorism((Aphorism*)St->Obj, ofst); //Выводим информацию об афоризма
+        Out_Aphorism((Aphorism*)St->Obj, St->Content, St->Estimation, ofst); //Выводим информацию об афоризма
     }
     else if (St->K == PROVERB)
     {
-        Out_Proverb((Proverb*)St->Obj, ofst); //Выводим информацию о пословицах и поговорках
+        Out_Proverb((Proverb*)St->Obj, St->Content, St->Estimation, ofst); //Выводим информацию о пословицах и поговорках
     }
     else if (St->K == RIDDLE)
     {
-        Out_Riddle((Riddle*)St->Obj, ofst);
+        Out_Riddle((Riddle*)St->Obj, St->Content, St->Estimation, ofst);
     }
     else
     {
@@ -193,22 +162,22 @@ void Out_Storehouse(Storehouse* St, ofstream& ofst) {
     }
 }
 
-void Out_Aphorism(Aphorism* A, ofstream& ofst) {
-    ofst << "It's an Aphorism: " << A->Content << endl; //Выводим содержание
+void Out_Aphorism(Aphorism* A, string Content, int Estimation, ofstream& ofst) {
+    ofst << "It's an Aphorism: " << Content << endl; //Выводим содержание
     ofst << "Aphorism's author is: " << A->Author << endl; //Выводим автора
-    ofst << "Subjective estimation of the adage: " << A->Estimation << endl;
+    ofst << "Subjective estimation of the adage: " << Estimation << endl;
 }
 
-void Out_Proverb(Proverb* P, ofstream& ofst) {
-    ofst << "It's a Proverb: " << P->Content << endl; //Выводим содержание
+void Out_Proverb(Proverb* P, string Content, int Estimation, ofstream& ofst) {
+    ofst << "It's a Proverb: " << Content << endl; //Выводим содержание
     ofst << "Proverbs's country is: " << P->Country << endl; //Выводим страну
-    ofst << "Subjective estimation of the adage: " << P->Estimation << endl;
+    ofst << "Subjective estimation of the adage: " << Estimation << endl;
 }
 
-void Out_Riddle(Riddle* R, ofstream& ofst) {
-    ofst << "It's a Riddle: " << R->Content << endl; //Выводим содержание
+void Out_Riddle(Riddle* R, string Content, int Estimation, ofstream& ofst) {
+    ofst << "It's a Riddle: " << Content << endl; //Выводим содержание
     ofst << "Riddle's answer is: " << R->Answer << endl; //Выводим ответ
-    ofst << "Subjective estimation of the adage: " << R->Estimation << endl;
+    ofst << "Subjective estimation of the adage: " << Estimation << endl;
 }
 
 Container* Clear(Container* Head) {
@@ -227,7 +196,7 @@ Container* Clear(Container* Head) {
 int Amount_Storehouse(Storehouse* St) {
     if (St->K == APHORISM || St->K == PROVERB || St->K == RIDDLE)
     {
-        return Amount(St);
+        return Amount(St->Content);
     }
     else
     {
@@ -235,37 +204,30 @@ int Amount_Storehouse(Storehouse* St) {
     }
 }
 
-int Amount(Storehouse* St) {
-    if (St->K == APHORISM || St->K == PROVERB || St->K == RIDDLE)
+int Amount(string Content) {
+    string Alph = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ 0123456789";
+    int Amount = 0;
+
+    for (int i = 0; i < Content.size(); i++)
     {
-        string Alph = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ 0123456789";
-        int Amount = 0;
+        bool Check = false;
 
-        for (int i = 0; i < St->Content.size(); i++)
+        for (int j = 0; j < Alph.size(); j++)
         {
-            bool Check = false;
-
-            for (int j = 0; j < Alph.size(); j++)
+            if (Content[i] == Alph[j])
             {
-                if (St->Content[i] == Alph[j])
-                {
-                    Check = true;
-                    break;
-                }
-            }
-
-            if (!Check)
-            {
-                Amount++;
+                Check = true;
+                break;
             }
         }
 
-        return Amount;
+        if (!Check)
+        {
+            Amount++;
+        }
     }
-    else
-    {
-        return -1;
-    }
+
+    return Amount;
 }
 
 bool Compare(Container* First, Container* Second)

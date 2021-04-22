@@ -1,0 +1,22 @@
+Container contains 5 elements.
+
+0: It's an Aphorism: Success is the child of audacity.
+Aphorism's author is: Benjamin Disraeli
+Subjective estimation of the adage: 7
+Amount of punctuation marks in the content of storehouse = 1
+1: It's a Riddle: What has a face and two hands but no arms or legs?
+Riddle's answer is: Clock
+Subjective estimation of the adage: 3
+Amount of punctuation marks in the content of storehouse = 1
+2: It's a Proverb: Two wrongs don't make a right.
+Proverbs's country is: England
+Subjective estimation of the adage: 4
+Amount of punctuation marks in the content of storehouse = 2
+3: It's a Proverb: When the going gets tough, the tough get going.
+Proverbs's country is: England
+Subjective estimation of the adage: 7
+Amount of punctuation marks in the content of storehouse = 2
+4: It's an Aphorism: You miss 100% of the shots you don't take.
+Aphorism's author is: Wayne Gretzky
+Subjective estimation of the adage: 9
+Amount of punctuation marks in the content of storehouse = 3
